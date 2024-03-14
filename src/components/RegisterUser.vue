@@ -40,6 +40,18 @@ export default {
         });
         // Here you could handle the response, for example, store the received token,
         // update the 'isLoggedIn' state, and redirect to the dashboard or any other page
+        const loginResponse = await axios.post('/login', {
+          email: response.email,
+          password: response.password,
+        });
+
+        const token = loginResponse.token;
+
+        localStorage.setItem('token', token);
+
+        this.$store.commit('isLoggedIn', true);
+
+        this.$router.push('/');
       } catch (error) {
         console.error('An error occurred:', error);
         if (error.response) {
