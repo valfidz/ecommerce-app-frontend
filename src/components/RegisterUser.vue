@@ -45,8 +45,6 @@ export default {
           password: this.password,
         });
 
-        console.log('loginResponse', loginResponse);
-
         if (loginResponse.data.token) {
           localStorage.setItem('token', loginResponse.data.token);
 
